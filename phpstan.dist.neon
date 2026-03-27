@@ -12,6 +12,8 @@ parameters:
     tmpDir: var/phpstan
     excludePaths:
         - tests/bootstrap.php
+        - var/*
+        - vendor/*
     parallel:
         maximumNumberOfProcesses: 1
     ignoreErrors:

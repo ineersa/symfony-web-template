@@ -84,6 +84,10 @@
     "php.validate.enable": false,
     "php.suggest.basic": false,
     "intelephense.telemetry.enabled": false,
+    "intelephense.files.exclude": [
+        "**/var/**",
+        "**/vendor/**"
+    ],
     "intelephense.completion.triggerParameterHints": true,
     "intelephense.format.enable": false,
     "intelephense.environment.includePaths": ["vendor"],
