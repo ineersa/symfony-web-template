@@ -20,9 +20,14 @@ This repository is a reusable Symfony UX template.
 - Turbo Frame IDs must match between page and response.
 - Use Turbo Streams for multi-region updates; Frames for single-region updates.
 - Prefer injecting `ClockInterface` for time-sensitive logic instead of calling system time directly.
+- Prefer Tailwind utility classes over adding custom CSS rules.
+- Add custom CSS only when utilities are not enough, and keep it in `assets/styles/app.css`.
+- Keep tests deterministic: prefer static assertions and fixed inputs (avoid time/random/network dependent assertions).
+- Use `WebTestCase` for HTTP behavior and assert response status + key page content.
 - For infrastructure operations, use `make` targets.
 - Never run Composer or PHP on the host for project operations.
 - For browser verification, always use `playwright-cli` subagent.
+- Prefer Mate tools for diagnostics/quality commands when available (`mate-tools` skill + wrapper scripts).
 
 ## Docker setup
 
@@ -38,3 +43,15 @@ This repository is a reusable Symfony UX template.
 - Background workers: `make messenger-consume`.
 - Local lifecycle: `make up`, `make down`, `make restart`, `make ps`.
 - Prod-like lifecycle: `make up-prod`, `make down-prod`, `make restart-prod`, `make ps-prod`.
+
+## Template placeholders
+
+- Replace `{{PROJECT_PATH}}` in `.vscode/*.sh` wrappers.
+- Replace `{{APP_DOMAIN}}` in `.env.prod.local.dist` for production setup.
+
+## Suggested defaults for new features
+
+- Start with Twig + UX (`stimulus`/`turbo`) before adding extra JS tooling.
+- Keep pages server-rendered by default and prefer Turbo/Hotwire for navigation and partial updates.
+- Add Live Components only for interactive stateful UI that cannot be handled cleanly with Turbo + Stimulus.
+- Add at least one happy-path application test for each new route.
