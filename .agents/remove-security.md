@@ -75,9 +75,7 @@ Replace with neutral behavior suitable for a public, auth-free template.
   - `docs/castor.md`
   - other docs if present
 - Remove Castor tasks that are purely auth-user helpers (if any).
-- Remove auth-related command references from:
-  - `.opencode/skills/castor/references/commands.md`
-  - `.cursor/skills/castor/references/commands.md`
+- Remove auth-related command references from `docs/castor.md` if any
 
 ## 7) Environment cleanup
 

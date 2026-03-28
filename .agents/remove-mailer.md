@@ -70,8 +70,6 @@ Update:
 - `README.md`
 - `docs/setup.md`
 - `docs/castor.md`
-- `.opencode/skills/castor/references/commands.md`
-- `.cursor/skills/castor/references/commands.md`
 
 Remove instructions related to local mail UI/tools.
 

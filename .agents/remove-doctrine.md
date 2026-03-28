@@ -75,8 +75,6 @@ Update docs to remove Doctrine-specific setup/commands:
 - `README.md`
 - `docs/setup.md`
 - `docs/castor.md`
-- `.opencode/skills/castor/references/commands.md`
-- `.cursor/skills/castor/references/commands.md`
 - any deployment or ops docs mentioning migrations/DB setup
 
 Make sure setup instructions still produce a working local app.

@@ -82,8 +82,6 @@ Update developer commands and documentation:
 - remove Mercure-specific notes from `README.md`
 - remove Mercure setup/deploy references from `docs/setup.md` and `docs/server-deployment.md`
 - remove Mercure references from `docs/castor.md`
-- remove Mercure command hints from `.opencode/skills/castor/references/commands.md`
-- remove Mercure command hints from `.cursor/skills/castor/references/commands.md`
 - remove or delete `docs/mercure.md`
 
 Ensure docs still describe a coherent template setup.
