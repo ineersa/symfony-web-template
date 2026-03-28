@@ -118,9 +118,9 @@ function root_sh(): void
 }
 
 #[AsTask(description: 'Run composer command in local container')]
-function composer(string $command): void
+function composer(string $cmd): void
 {
-    dev_php_exec('composer ' . $command);
+    dev_php_exec('composer ' . $cmd);
 }
 
 #[AsTask(description: 'Install PHP dependencies (works with or without a running container)')]
