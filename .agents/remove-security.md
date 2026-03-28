@@ -72,8 +72,12 @@ Replace with neutral behavior suitable for a public, auth-free template.
 - Remove docs sections related to login/auth user bootstrap from:
   - `README.md`
   - `docs/setup.md`
+  - `docs/castor.md`
   - other docs if present
 - Remove Castor tasks that are purely auth-user helpers (if any).
+- Remove auth-related command references from:
+  - `.opencode/skills/castor/references/commands.md`
+  - `.cursor/skills/castor/references/commands.md`
 
 ## 7) Environment cleanup
 
