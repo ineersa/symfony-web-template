@@ -21,14 +21,14 @@ Use host nginx (or another reverse proxy) for public TLS on 443.
 2. Build and start:
 
    ```bash
-   make build-prod
-   make up-prod
+   castor prod:build
+   castor prod:up
    ```
 
 3. Run migrations:
 
    ```bash
-   make doctrine-migrate-prod
+   castor prod:console "doctrine:migrations:migrate --no-interaction"
    ```
 
 4. Configure nginx to proxy `http://127.0.0.1:${APP_HTTP_PORT:-8080}`.

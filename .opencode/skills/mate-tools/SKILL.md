@@ -45,7 +45,7 @@ This project runs Mate from the Docker `php` service. Tool execution should ther
 - `<tool-name>`: Mate MCP tool name, e.g. `php-version`, `phpstan-analyse`.
 - `<json-input>`: JSON object string, e.g. `'{}'`, `'{"mode":"summary"}'`.
 
-Run from repo root (where `compose.yaml` lives). JSON must be valid. Use single quotes around the JSON string in shell. If Docker stack is down, start it first (`make up`).
+Run from repo root (where `compose.yaml` lives). JSON must be valid. Use single quotes around the JSON string in shell. If Docker stack is down, start it first (`castor dev:up`).
 
 ### Discovering available tools
 
@@ -64,7 +64,7 @@ docker compose exec -T php php vendor/bin/mate mcp:tools:list --format=toon
 - Prefer Mate MCP tools for focused diagnostics and machine-readable output.
 - All tool output uses `--format=toon` for maximum token efficiency in LLM contexts.
 - Use concise modes first (`summary`/default), then increase detail only when needed.
-- For direct shell-based quality tasks in this repo, follow project policy and prefer `make` targets.
+- For direct shell-based quality tasks in this repo, follow project policy and prefer Castor tasks.
 - Keep JSON input explicit and valid; pass `{}` when a tool expects an object with no required fields.
 
 ## Tool catalog

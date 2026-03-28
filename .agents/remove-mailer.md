@@ -8,7 +8,7 @@ Your goal is to remove Symfony Mailer completely from this template while keepin
 
 - This project uses Docker-first workflows.
 - Do not run Composer or PHP on the host.
-- Use container commands (for example through `docker compose` / `make`).
+- Use container commands (for example through `docker compose` / `castor`).
 
 ## 1) Remove mailer dependencies
 
@@ -62,11 +62,11 @@ Delete or refactor mail-specific code:
 
 If needed, replace with a no-op placeholder so template behavior remains coherent.
 
-## 6) Clean Make targets and docs
+## 6) Clean Castor tasks and docs
 
 Update:
 
-- `Makefile` (remove mail-specific log/ops targets)
+- `castor.php` and `.castor/*.php` (remove mail-specific log/ops tasks)
 - `README.md`
 - `docs/setup.md`
 

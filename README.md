@@ -1,35 +1,50 @@
 # Symfony Web Template
 
-Reusable Symfony 8 template with Docker (FrankenPHP), Make targets, Cursor/OpenCode setup, and production-friendly defaults.
+Reusable Symfony 8 template with Docker (FrankenPHP), Castor tasks, Cursor/OpenCode setup, and production-friendly defaults.
 
 ## Included in this template
 
 - Docker runtime: FrankenPHP + Mercure + SQLite-ready setup.
 - Compose files: `compose.yaml`, `compose.override.yaml`, `compose.prod.yaml`.
-- Developer workflow: `Makefile`, VS Code wrappers, PHPStan/CS Fixer defaults.
+- Developer workflow: Castor task runner (`castor.php` + `.castor/`), VS Code wrappers, PHPStan/CS Fixer defaults.
 - Agent setup: `.cursor/skills`, `.opencode/skills`, `.opencode/agents`, `AGENTS.md`.
 - Environment templates: `.env`, `.env.dev`, `.env.test`, `.env.prod`, `.env.prod.local.dist`.
 - Generic docs: local setup, Mercure notes, and deployment guide.
 
+## Install Castor
+
+Install Castor once on your machine:
+
+```bash
+curl "https://castor.jolicode.com/install" | bash
+```
+
+Then verify:
+
+```bash
+castor --version
+castor list
+```
+
 ## Quick start
 
 ```bash
-make setup
-make dev-bootstrap
+castor dev:setup
+castor dev:bootstrap
 ```
 
-`make dev-bootstrap` does not run database migrations.
+`castor dev:bootstrap` does not run database migrations.
 
 If your project uses Doctrine migrations:
 
 ```bash
-make doctrine-migrate
+castor dev:console "doctrine:migrations:migrate --no-interaction"
 ```
 
 In another terminal:
 
 ```bash
-make messenger-consume
+castor dev:messenger-consume
 ```
 
 Open `http://localhost:8080`.
@@ -37,15 +52,33 @@ Open `http://localhost:8080`.
 ## Daily run
 
 ```bash
-make up
+castor dev:up
 ```
 
 Useful lifecycle commands:
 
-- `make down`
-- `make restart`
-- `make ps`
-- `make logs`
+- `castor dev:down`
+- `castor dev:restart`
+- `castor dev:ps`
+- `castor dev:logs`
+
+## Production-like local run
+
+```bash
+castor prod:up
+```
+
+Useful commands:
+
+- `castor prod:down`
+- `castor prod:restart`
+- `castor prod:ps`
+- `castor prod:logs`
+- `castor prod:console "doctrine:migrations:migrate --no-interaction"`
+
+## Command reference
+
+- `docs/castor.md`
 
 ## Placeholder replacement checklist
 

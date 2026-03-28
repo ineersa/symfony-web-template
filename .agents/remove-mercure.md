@@ -8,7 +8,7 @@ Your goal is to remove Mercure completely from this template while keeping the a
 
 - This project uses Docker-first workflows.
 - Do not run Composer or PHP on the host.
-- Use container commands (for example through `docker compose` / `make`).
+- Use container commands (for example through `docker compose` / `castor`).
 
 ## 1) Remove Mercure dependencies
 
@@ -74,7 +74,7 @@ Remove app code and templates that rely on Mercure, including:
 
 If features depend on realtime updates, replace with a no-op or fallback implementation suitable for a base template.
 
-## 7) Clean Make targets and docs
+## 7) Clean Castor tasks and docs
 
 Update developer commands and documentation:
 

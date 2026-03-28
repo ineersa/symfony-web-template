@@ -28,3 +28,4 @@
 .playwright/
 *.code-workspace
 /config/reference.php
+/.castor.stub.php

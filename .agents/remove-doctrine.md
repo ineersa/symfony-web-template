@@ -8,7 +8,7 @@ Your goal is to remove Doctrine completely from this template while keeping the 
 
 - This project uses Docker-first workflows.
 - Do not run Composer or PHP on the host.
-- Use container commands (for example through `docker compose` / `make`).
+- Use container commands (for example through `docker compose` / `castor`).
 
 ## 1) Remove Doctrine dependencies
 
@@ -45,7 +45,7 @@ Also remove Doctrine mapping/migration-specific references from other config fil
 ## 4) Remove DB and migration references from env/config
 
 - Remove `DATABASE_URL` lines from `.env` and related env files where they are only used for Doctrine.
-- Remove/adjust any Make targets that call Doctrine commands:
+- Remove/adjust any Castor tasks that call Doctrine commands:
   - `doctrine:migrations:*`
   - `doctrine:*`
   - any migration or schema helper target
@@ -94,5 +94,5 @@ Before finishing, confirm no Doctrine references remain in tracked source/config
 - no `doctrine/` packages in `composer.json`
 - no Doctrine bundles in `config/bundles.php`
 - no Doctrine config files in `config/packages/`
-- no Doctrine commands in `Makefile`
+- no Doctrine tasks in `.castor/dev.php` and `.castor/prod.php`
 - no Doctrine setup docs in `README.md` and `docs/`

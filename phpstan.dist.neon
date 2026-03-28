@@ -16,5 +16,3 @@ parameters:
         - vendor/*
     parallel:
         maximumNumberOfProcesses: 1
-    ignoreErrors:
-        - '#^Unused .*?::__construct$#'

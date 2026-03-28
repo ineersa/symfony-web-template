@@ -8,6 +8,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     acl \
+    bash \
     file \
     gettext \
     git \
@@ -70,7 +71,7 @@ RUN set -eux; \
     composer run-script --no-dev post-install-cmd; \
     chmod +x bin/console
 
-# Production UI: Tailwind + AssetMapper (dev uses make tailwind-watch / assets-compile instead)
+# Production UI: Tailwind + AssetMapper (dev uses Castor tailwind/assets tasks instead)
 RUN set -eux; \
     php bin/console tailwind:build --env=prod --no-debug; \
     php bin/console asset-map:compile --env=prod --no-debug

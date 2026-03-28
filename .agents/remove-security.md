@@ -8,7 +8,7 @@ Your goal is to remove Symfony Security completely from this template when authe
 
 - This project uses Docker-first workflows.
 - Do not run Composer or PHP on the host.
-- Use container commands (for example through `docker compose` / `make`).
+- Use container commands (for example through `docker compose` / `castor`).
 
 ## 1) Remove security dependencies
 
@@ -66,14 +66,14 @@ Remove calls/usages such as:
 
 Replace with neutral behavior suitable for a public, auth-free template.
 
-## 6) Clean routes, docs, and Make targets
+## 6) Clean routes, docs, and Castor tasks
 
 - Remove security/login references from routing and controllers.
 - Remove docs sections related to login/auth user bootstrap from:
   - `README.md`
   - `docs/setup.md`
   - other docs if present
-- Remove Make targets that are purely auth-user helpers (if any).
+- Remove Castor tasks that are purely auth-user helpers (if any).
 
 ## 7) Environment cleanup
 

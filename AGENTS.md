@@ -10,6 +10,7 @@ This repository is a reusable Symfony UX template.
 - **Reactive component that re-renders on user input** -- use the `live-component` skill
 - **Not sure which one fits** -- use the `symfony-ux` skill
 - **Browser automation / UI testing** -- use Task tool with `subagent_type: "playwright-cli"`
+- **Infrastructure / Docker / project operations** -- use Castor tasks (`castor ...`) and the `castor` skill
 
 ## Key rules
 
@@ -24,7 +25,7 @@ This repository is a reusable Symfony UX template.
 - Add custom CSS only when utilities are not enough, and keep it in `assets/styles/app.css`.
 - Keep tests deterministic: prefer static assertions and fixed inputs (avoid time/random/network dependent assertions).
 - Use `WebTestCase` for HTTP behavior and assert response status + key page content.
-- For infrastructure operations, use `make` targets.
+- For infrastructure operations, use Castor tasks (`castor ...`).
 - Never run Composer or PHP on the host for project operations.
 - For browser verification, always use `playwright-cli` subagent.
 - Prefer Mate tools for diagnostics/quality commands when available (`mate-tools` skill + wrapper scripts).
@@ -37,12 +38,12 @@ This repository is a reusable Symfony UX template.
 - Dev compose: `compose.yaml` + `compose.override.yaml`.
 - Prod-like compose: `compose.yaml` + `compose.prod.yaml`.
 
-## Make flow
+## Castor flow
 
-- First-time setup: `make setup`, then `make dev-bootstrap` (and `make doctrine-migrate` if Doctrine is used).
-- Background workers: `make messenger-consume`.
-- Local lifecycle: `make up`, `make down`, `make restart`, `make ps`.
-- Prod-like lifecycle: `make up-prod`, `make down-prod`, `make restart-prod`, `make ps-prod`.
+- First-time setup: `castor dev:setup`, then `castor dev:bootstrap` (and `castor dev:console "doctrine:migrations:migrate --no-interaction"` if Doctrine is used).
+- Background workers: `castor dev:messenger-consume`.
+- Local lifecycle: `castor dev:up`, `castor dev:down`, `castor dev:restart`, `castor dev:ps`.
+- Prod-like lifecycle: `castor prod:up`, `castor prod:down`, `castor prod:restart`, `castor prod:ps`.
 
 ## Template placeholders
 

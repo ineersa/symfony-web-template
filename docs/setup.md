@@ -18,31 +18,31 @@ This template runs on FrankenPHP with Symfony worker mode, built-in Mercure, and
 1. Build images, start containers, and install dependencies:
 
    ```bash
-   make setup
+   castor dev:setup
    ```
 
 2. Run frontend build bootstrap:
 
    ```bash
-   make dev-bootstrap
+   castor dev:bootstrap
    ```
 
 3. If your project uses Doctrine migrations, run:
 
    ```bash
-   make doctrine-migrate
+   castor dev:console "doctrine:migrations:migrate --no-interaction"
    ```
 
 4. Run Messenger in another terminal:
 
    ```bash
-   make messenger-consume
+   castor dev:messenger-consume
    ```
 
 5. Optional while editing CSS/templates:
 
    ```bash
-   make tailwind-watch
+   castor dev:console "tailwind:build --watch"
    ```
 
 6. Open the app:
@@ -53,22 +53,22 @@ This template runs on FrankenPHP with Symfony worker mode, built-in Mercure, and
 
 ## Common local workflow
 
-- Start: `make up`
-- Stop: `make down`
-- Restart: `make restart`
-- Status: `make ps`
-- Logs: `make logs`
+- Start: `castor dev:up`
+- Stop: `castor dev:down`
+- Restart: `castor dev:restart`
+- Status: `castor dev:ps`
+- Logs: `castor dev:logs`
 
 ## Production-like local run
 
 ```bash
-make up-prod
+castor prod:up
 ```
 
 Useful commands:
 
-- `make down-prod`
-- `make restart-prod`
-- `make ps-prod`
-- `make logs-prod`
-- `make doctrine-migrate-prod`
+- `castor prod:down`
+- `castor prod:restart`
+- `castor prod:ps`
+- `castor prod:logs`
+- `castor prod:console "doctrine:migrations:migrate --no-interaction"`
