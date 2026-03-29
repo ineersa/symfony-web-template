@@ -9,6 +9,9 @@ Your goal is to remove Doctrine completely from this template while keeping the 
 - This project uses Docker-first workflows.
 - Do not run Composer or PHP on the host.
 - Use container commands (for example through `docker compose` / `castor`).
+- Preserve the `data/` directory and `data/.gitignore`.
+- Do not delete `data/` even after Doctrine removal; it is used by runtime storage (for example rate limiter/cache) and Docker volume mounts.
+- Do not delete `config/reference` during cleanup; it is optional/generated and not part of Doctrine removal.
 - Never modify skill/instruction files during cleanup. Treat these paths as read-only:
   - `.opencode/skills/`
   - `.agents/`
@@ -70,6 +73,8 @@ Delete or refactor app files that are Doctrine-only, such as:
 If Doctrine is fully removed from the template, also remove the `src/Entity/` and `src/Repository/` directories when they are empty or only contain Doctrine placeholders.
 
 If a directory must remain in git for template structure, keep only `.gitignore` placeholders.
+
+Never remove `data/`; if Doctrine-related files inside it must be cleaned, keep the directory and `data/.gitignore` intact.
 
 ## 7) Clean docs and developer commands
 
