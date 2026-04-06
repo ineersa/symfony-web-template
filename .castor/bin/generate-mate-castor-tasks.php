@@ -11,6 +11,10 @@ declare(strict_types=1);
  *
  * Or: castor dev:mate-generate-castor
  *
+ * Castor namespaces are grouped by tool prefix (mate-composer, mate-database, …) so
+ * `castor list mate-database` is smaller than one flat `mate:*` list. Do not run
+ * `castor list mate` — Castor treats it as an ambiguous prefix.
+ *
  * Optional: MATE_TOOLS_LIST_JSON=/path/to/dump.json to skip running mate (CI / offline).
  */
 $projectRoot = dirname(__DIR__, 2);
@@ -74,7 +78,8 @@ foreach ($tools as $toolId => $tool) {
 
     $func = toolFunctionName((string) $toolId);
     $taskDesc = escapePhpSingleQuotedString($description);
-    $out[] = '#[AsTask(name: '.var_export($name, true).', namespace: \'mate\', description: \''.$taskDesc.'\')]';
+    [$castorNs, $castorTaskName] = castorCliRegistrationForMateTool($name);
+    $out[] = '#[AsTask(name: '.var_export($castorTaskName, true).', namespace: '.var_export($castorNs, true).', description: \''.$taskDesc.'\')]';
 
     if (null === $schema || !isset($schema['properties']) || !\is_array($schema['properties']) || [] === $schema['properties']) {
         $out[] = 'function '.$func.'(): void';
@@ -325,6 +330,39 @@ function normalizeJsonTypes(mixed $type): array
     return [] !== $out ? $out : ['string'];
 }
 
+/**
+ * Maps Mate MCP tool names to Castor namespaces so `castor list mate-database` (etc.) stays small
+ * for LLM context. The Mate tool name passed to `mate_tool_exec` is unchanged.
+ *
+ * @return array{0: string, 1: string} [namespace, castorTaskName]
+ */
+function castorCliRegistrationForMateTool(string $mateToolName): array
+{
+    if (str_starts_with($mateToolName, 'composer-')) {
+        return ['mate-composer', $mateToolName];
+    }
+    if (str_starts_with($mateToolName, 'database-')) {
+        return ['mate-database', $mateToolName];
+    }
+    if (str_starts_with($mateToolName, 'monolog-')) {
+        return ['mate-monolog', $mateToolName];
+    }
+    if (str_starts_with($mateToolName, 'phpunit-')) {
+        return ['mate-phpunit', $mateToolName];
+    }
+    if (str_starts_with($mateToolName, 'phpstan-')) {
+        return ['mate-phpstan', $mateToolName];
+    }
+    if (str_starts_with($mateToolName, 'symfony-')) {
+        return ['mate-symfony', $mateToolName];
+    }
+    if ('server-info' === $mateToolName) {
+        return ['mate-server', 'info'];
+    }
+
+    return ['mate', $mateToolName];
+}
+
 function toolFunctionName(string $toolId): string
 {
     $base = preg_replace('/[^a-zA-Z0-9_]+/', '_', str_replace('-', '_', $toolId));
@@ -351,7 +389,7 @@ function summarizeDescription(?string $d): string
 
 /**
  * Collapses whitespace for embedding in PHP string literals; no length truncation so
- * `castor mate:* --help` shows full Mate tool and option descriptions.
+ * `castor mate-*:<task> --help` shows full Mate tool and option descriptions.
  */
 function normalizeDescriptionText(string $d): string
 {

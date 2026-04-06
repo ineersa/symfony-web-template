@@ -1,6 +1,6 @@
 # Monolog and Symfony diagnostics via Mate (CLI)
 
-Use Castor **`mate:monolog-*`** and **`mate:symfony-*`** (or `mate/mate-tool-call.sh`) for log and profiler inspection inside the Docker `php` service. **MCP-only resources** (`symfony-profiler://…`) are not available in Cursor — use **`symfony-profiler-list`** then **`symfony-profiler-get`**.
+Use Castor **`mate-monolog:monolog-*`** and **`mate-symfony:symfony-*`** (or `mate/mate-tool-call.sh`) for log and profiler inspection inside the Docker `php` service. **MCP-only resources** (`symfony-profiler://…`) are not available in Cursor — use **`symfony-profiler-list`** then **`symfony-profiler-get`**.
 
 ## Monolog tools
 
@@ -41,7 +41,7 @@ Container service IDs → classes; optional filter (like targeted `debug:contain
 - Castor: optional `--query` (partial match on ID or class)
 
 ```bash
-castor mate:symfony-services --query=LoggerInterface
+castor mate-symfony:symfony-services --query=LoggerInterface
 mate/mate-tool-call.sh symfony-services '{"query":"event_dispatcher"}'
 ```
 
@@ -60,18 +60,18 @@ Full profile payload for a token from the list output.
 ## Monolog patterns
 
 ```bash
-castor mate:monolog-tail --lines=200 --level=ERROR
-castor mate:monolog-search SQLSTATE --environment=dev --limit=50
-castor mate:monolog-search 'TimeoutException|ConnectException' --regex --limit=100
+castor mate-monolog:monolog-tail --lines=200 --level=ERROR
+castor mate-monolog:monolog-search SQLSTATE --environment=dev --limit=50
+castor mate-monolog:monolog-search 'TimeoutException|ConnectException' --regex --limit=100
 mate/mate-tool-call.sh monolog-context-search '{"key":"request_id","value":"abc-123"}'
 ```
 
 ## Profiler patterns (no MCP resources)
 
 ```bash
-castor mate:symfony-profiler-list --limit=1
-castor mate:symfony-profiler-list --limit=10 --method=GET --status-code=500
-castor mate:symfony-profiler-get --token=<token-from-list>
+castor mate-symfony:symfony-profiler-list --limit=1
+castor mate-symfony:symfony-profiler-list --limit=10 --method=GET --status-code=500
+castor mate-symfony:symfony-profiler-get --token=<token-from-list>
 ```
 
 ## Parameter guidance

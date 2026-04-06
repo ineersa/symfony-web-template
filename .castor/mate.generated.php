@@ -12,7 +12,7 @@ use Castor\Attribute\AsOption;
 use Castor\Attribute\AsTask;
 use function CastorTasks\mate_tool_exec;
 
-#[AsTask(name: 'composer-install', namespace: 'mate', description: 'Install Composer dependencies from composer.json and composer.lock. Use this when setting up a project or ensuring dependencies are up to date. Available modes: "default" (status + errors/warnings), "summary" (just counts and status), "detailed" (full output with metadata).')]
+#[AsTask(name: 'composer-install', namespace: 'mate-composer', description: 'Install Composer dependencies from composer.json and composer.lock. Use this when setting up a project or ensuring dependencies are up to date. Available modes: "default" (status + errors/warnings), "summary" (just counts and status), "detailed" (full output with metadata).')]
 function tool_composer_install(
     #[AsOption(name: 'preferDist')] bool $preferDist = true,
     #[AsOption(name: 'noDev')] bool $noDev = false,
@@ -28,7 +28,7 @@ function tool_composer_install(
     mate_tool_exec('composer-install', $payload);
 }
 
-#[AsTask(name: 'composer-remove', namespace: 'mate', description: 'Remove a package from composer.json. Use when removing a library or framework dependency from the project. Available modes: "default" (status + removed packages), "summary" (just counts and status), "detailed" (full output with metadata).')]
+#[AsTask(name: 'composer-remove', namespace: 'mate-composer', description: 'Remove a package from composer.json. Use when removing a library or framework dependency from the project. Available modes: "default" (status + removed packages), "summary" (just counts and status), "detailed" (full output with metadata).')]
 function tool_composer_remove(
     #[AsArgument(name: 'package')] string $package,
     #[AsOption(name: 'dev')] bool $dev = false,
@@ -42,7 +42,7 @@ function tool_composer_remove(
     mate_tool_exec('composer-remove', $payload);
 }
 
-#[AsTask(name: 'composer-require', namespace: 'mate', description: 'Add a new package requirement to composer.json. Use when adding a new library or framework dependency to the project. Available modes: "default" (status + errors/warnings), "summary" (just counts and status), "detailed" (full output with metadata).')]
+#[AsTask(name: 'composer-require', namespace: 'mate-composer', description: 'Add a new package requirement to composer.json. Use when adding a new library or framework dependency to the project. Available modes: "default" (status + errors/warnings), "summary" (just counts and status), "detailed" (full output with metadata).')]
 function tool_composer_require(
     #[AsArgument(name: 'package')] string $package,
     #[AsOption(name: 'constraint')] ?string $constraint = null,
@@ -58,7 +58,7 @@ function tool_composer_require(
     mate_tool_exec('composer-require', $payload);
 }
 
-#[AsTask(name: 'composer-update', namespace: 'mate', description: 'Update Composer dependencies to latest versions within version constraints. Use when updating packages or resolving dependency conflicts. Available modes: "default" (status + errors/warnings), "summary" (just counts and status), "detailed" (full output with metadata).')]
+#[AsTask(name: 'composer-update', namespace: 'mate-composer', description: 'Update Composer dependencies to latest versions within version constraints. Use when updating packages or resolving dependency conflicts. Available modes: "default" (status + errors/warnings), "summary" (just counts and status), "detailed" (full output with metadata).')]
 function tool_composer_update(
     #[AsOption(name: 'packages')] ?string $packages = null,
     #[AsOption(name: 'preferDist')] bool $preferDist = true,
@@ -74,7 +74,7 @@ function tool_composer_update(
     mate_tool_exec('composer-update', $payload);
 }
 
-#[AsTask(name: 'composer-why', namespace: 'mate', description: 'Show which packages depend on a specific package. Use this to understand why a package is installed or to trace dependency chains. Available modes: "default" (dependency list), "summary" (just counts), "detailed" (full dependency details).')]
+#[AsTask(name: 'composer-why', namespace: 'mate-composer', description: 'Show which packages depend on a specific package. Use this to understand why a package is installed or to trace dependency chains. Available modes: "default" (dependency list), "summary" (just counts), "detailed" (full dependency details).')]
 function tool_composer_why(
     #[AsArgument(name: 'package')] string $package,
     #[AsOption(name: 'mode')] string $mode = 'default'
@@ -86,7 +86,7 @@ function tool_composer_why(
     mate_tool_exec('composer-why', $payload);
 }
 
-#[AsTask(name: 'composer-why-not', namespace: 'mate', description: 'Show why a specific package version cannot be installed. Use this to diagnose dependency conflicts or version constraint issues. Available modes: "default" (conflict list), "summary" (just counts), "detailed" (full conflict details with metadata).')]
+#[AsTask(name: 'composer-why-not', namespace: 'mate-composer', description: 'Show why a specific package version cannot be installed. Use this to diagnose dependency conflicts or version constraint issues. Available modes: "default" (conflict list), "summary" (just counts), "detailed" (full conflict details with metadata).')]
 function tool_composer_why_not(
     #[AsArgument(name: 'package')] string $package,
     #[AsOption(name: 'constraint')] ?string $constraint = null,
@@ -100,7 +100,7 @@ function tool_composer_why_not(
     mate_tool_exec('composer-why-not', $payload);
 }
 
-#[AsTask(name: 'database-query', namespace: 'mate', description: 'Runs read-only SQL queries against a Doctrine DBAL connection. Only SELECT and WITH (CTE) queries are allowed. Writes, DDL, and transaction control are blocked. One statement per call — semicolons are rejected; split into separate calls. ROW LIMIT: SELECT without WHERE must include LIMIT 10. Always default to LIMIT 10. Large text columns (>200 chars) are truncated to "<TEXT>" in multi-row results. To see full text, query must return exactly 1 row. Aggregates without GROUP BY (e.g. SELECT COUNT(*)) are exempt from the LIMIT requirement. Before writing SQL, use database-schema to discover table/column names and avoid errors. Connection names come from the application\'s Doctrine DBAL configuration. If `connection` is omitted, the default Doctrine DBAL connection is used.')]
+#[AsTask(name: 'database-query', namespace: 'mate-database', description: 'Runs read-only SQL queries against a Doctrine DBAL connection. Only SELECT and WITH (CTE) queries are allowed. Writes, DDL, and transaction control are blocked. One statement per call — semicolons are rejected; split into separate calls. ROW LIMIT: SELECT without WHERE must include LIMIT 10. Always default to LIMIT 10. Large text columns (>200 chars) are truncated to "<TEXT>" in multi-row results. To see full text, query must return exactly 1 row. Aggregates without GROUP BY (e.g. SELECT COUNT(*)) are exempt from the LIMIT requirement. Before writing SQL, use database-schema to discover table/column names and avoid errors. Connection names come from the application\'s Doctrine DBAL configuration. If `connection` is omitted, the default Doctrine DBAL connection is used.')]
 function tool_database_query(
     #[AsArgument(name: 'query', description: 'SQL query to validate and execute in read-only mode')] string $query,
     #[AsOption(name: 'connection', description: 'Optional Doctrine DBAL connection name')] ?string $connection = null
@@ -112,7 +112,7 @@ function tool_database_query(
     mate_tool_exec('database-query', $payload);
 }
 
-#[AsTask(name: 'database-schema', namespace: 'mate', description: 'Inspect schema for a Doctrine DBAL connection. Prefer this over raw information_schema/system catalog queries for metadata and definitions. Detail levels: - summary (default): matching table/view names only. - columns: tables with column names, types, nullability, defaults. - full: columns plus indexes, foreign keys, constraints, trigger and routine definitions. Include flags: - includeViews=true adds view names (summary/columns) or view SQL definitions (full). - includeRoutines=true adds procedures, functions, sequences, trigger names (summary/columns) or their definitions (full). Use detail="columns" or detail="full" with a narrow filter whenever possible. filter matches object names; omit or use filter="" to include all objects. Connection names come from the application\'s Doctrine DBAL configuration. If `connection` is omitted, the default Doctrine DBAL connection is used.')]
+#[AsTask(name: 'database-schema', namespace: 'mate-database', description: 'Inspect schema for a Doctrine DBAL connection. Prefer this over raw information_schema/system catalog queries for metadata and definitions. Detail levels: - summary (default): matching table/view names only. - columns: tables with column names, types, nullability, defaults. - full: columns plus indexes, foreign keys, constraints, trigger and routine definitions. Include flags: - includeViews=true adds view names (summary/columns) or view SQL definitions (full). - includeRoutines=true adds procedures, functions, sequences, trigger names (summary/columns) or their definitions (full). Use detail="columns" or detail="full" with a narrow filter whenever possible. filter matches object names; omit or use filter="" to include all objects. Connection names come from the application\'s Doctrine DBAL configuration. If `connection` is omitted, the default Doctrine DBAL connection is used.')]
 function tool_database_schema(
     #[AsOption(name: 'connection', description: 'Optional Doctrine DBAL connection name')] ?string $connection = null,
     #[AsOption(name: 'filter', description: 'Optional object-name filter')] string $filter = '',
@@ -132,7 +132,7 @@ function tool_database_schema(
     mate_tool_exec('database-schema', $payload);
 }
 
-#[AsTask(name: 'monolog-context-search', namespace: 'mate', description: 'Search log entries by structured context data. Finds entries where a specific context key contains the given value.')]
+#[AsTask(name: 'monolog-context-search', namespace: 'mate-monolog', description: 'Search log entries by structured context data. Finds entries where a specific context key contains the given value.')]
 function tool_monolog_context_search(
     #[AsArgument(name: 'key', description: 'The context field name to search for (e.g. user_id, exception, order_id)')] string $key,
     #[AsArgument(name: 'value', description: 'The value to match in the context field')] string $value,
@@ -150,13 +150,13 @@ function tool_monolog_context_search(
     mate_tool_exec('monolog-context-search', $payload);
 }
 
-#[AsTask(name: 'monolog-list-channels', namespace: 'mate', description: 'List all unique Monolog channel names found across log files (e.g. app, security, doctrine).')]
+#[AsTask(name: 'monolog-list-channels', namespace: 'mate-monolog', description: 'List all unique Monolog channel names found across log files (e.g. app, security, doctrine).')]
 function tool_monolog_list_channels(): void
 {
     mate_tool_exec('monolog-list-channels');
 }
 
-#[AsTask(name: 'monolog-list-files', namespace: 'mate', description: 'List available log files with metadata (name, path, size, last modified). Use to discover which logs exist before searching.')]
+#[AsTask(name: 'monolog-list-files', namespace: 'mate-monolog', description: 'List available log files with metadata (name, path, size, last modified). Use to discover which logs exist before searching.')]
 function tool_monolog_list_files(
     #[AsOption(name: 'environment', description: 'Filter log files by Symfony environment (e.g. dev, prod, test)')] ?string $environment = null
 ): void {
@@ -166,7 +166,7 @@ function tool_monolog_list_files(
     mate_tool_exec('monolog-list-files', $payload);
 }
 
-#[AsTask(name: 'monolog-search', namespace: 'mate', description: 'Search log entries by text or regex pattern. Supports filtering by log level, channel, environment, and date range. Use empty string for term to match all entries when using filters only.')]
+#[AsTask(name: 'monolog-search', namespace: 'mate-monolog', description: 'Search log entries by text or regex pattern. Supports filtering by log level, channel, environment, and date range. Use empty string for term to match all entries when using filters only.')]
 function tool_monolog_search(
     #[AsArgument(name: 'term', description: 'Text to search for in log messages, or a regex pattern when $regex is true')] string $term,
     #[AsOption(name: 'regex', description: 'When true, treat $term as a regular expression pattern')] bool $regex = false,
@@ -190,7 +190,7 @@ function tool_monolog_search(
     mate_tool_exec('monolog-search', $payload);
 }
 
-#[AsTask(name: 'monolog-tail', namespace: 'mate', description: 'Get the most recent log entries. Reads from the end of log files, optionally filtered by level and environment.')]
+#[AsTask(name: 'monolog-tail', namespace: 'mate-monolog', description: 'Get the most recent log entries. Reads from the end of log files, optionally filtered by level and environment.')]
 function tool_monolog_tail(
     #[AsOption(name: 'lines', description: 'Number of most recent log entries to return')] int $lines = 50,
     #[AsOption(name: 'level', description: 'Filter by log level: DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL, ALERT, EMERGENCY')] ?string $level = null,
@@ -204,7 +204,7 @@ function tool_monolog_tail(
     mate_tool_exec('monolog-tail', $payload);
 }
 
-#[AsTask(name: 'phpstan-analyse', namespace: 'mate', description: 'Run PHPStan static analysis with token-optimized TOON output. Available modes: "toon" (compact format), "summary" (totals only), "detailed" (full messages), "by-file" (grouped by file), "by-type" (grouped by error type). Use for: checking code quality, finding type errors, validating changes.')]
+#[AsTask(name: 'phpstan-analyse', namespace: 'mate-phpstan', description: 'Run PHPStan static analysis with token-optimized TOON output. Available modes: "toon" (compact format), "summary" (totals only), "detailed" (full messages), "by-file" (grouped by file), "by-type" (grouped by error type). Use for: checking code quality, finding type errors, validating changes.')]
 function tool_phpstan_analyse(
     #[AsOption(name: 'configuration', description: 'Path to PHPStan configuration file (defaults to auto-detection)')] ?string $configuration = null,
     #[AsOption(name: 'level', description: 'PHPStan rule level (0-9, higher is stricter)')] ?int $level = null,
@@ -220,7 +220,7 @@ function tool_phpstan_analyse(
     mate_tool_exec('phpstan-analyse', $payload);
 }
 
-#[AsTask(name: 'phpstan-analyse-file', namespace: 'mate', description: 'Run PHPStan analysis on a specific file. Returns token-optimized TOON format. Available modes: "toon" (compact format), "summary" (totals only), "detailed" (full messages). Use for: validating changes to a single file, debugging specific file issues, focused analysis.')]
+#[AsTask(name: 'phpstan-analyse-file', namespace: 'mate-phpstan', description: 'Run PHPStan analysis on a specific file. Returns token-optimized TOON format. Available modes: "toon" (compact format), "summary" (totals only), "detailed" (full messages). Use for: validating changes to a single file, debugging specific file issues, focused analysis.')]
 function tool_phpstan_analyse_file(
     #[AsOption(name: 'file', description: 'Path to the PHP file to analyze (relative to project root)')] ?string $file = null,
     #[AsOption(name: 'configuration', description: 'Path to PHPStan configuration file (defaults to auto-detection)')] ?string $configuration = null,
@@ -236,7 +236,7 @@ function tool_phpstan_analyse_file(
     mate_tool_exec('phpstan-analyse-file', $payload);
 }
 
-#[AsTask(name: 'phpstan-clear-cache', namespace: 'mate', description: 'Clear PHPStan result cache to force fresh analysis. Use for: forcing fresh analysis after stale results, clearing cache after major code changes, resetting analysis state after dependency updates or configuration modifications.')]
+#[AsTask(name: 'phpstan-clear-cache', namespace: 'mate-phpstan', description: 'Clear PHPStan result cache to force fresh analysis. Use for: forcing fresh analysis after stale results, clearing cache after major code changes, resetting analysis state after dependency updates or configuration modifications.')]
 function tool_phpstan_clear_cache(
     #[AsOption(name: 'configuration')] ?string $configuration = null
 ): void {
@@ -246,7 +246,7 @@ function tool_phpstan_clear_cache(
     mate_tool_exec('phpstan-clear-cache', $payload);
 }
 
-#[AsTask(name: 'phpunit-list-tests', namespace: 'mate', description: 'List all available PHPUnit tests in the project. Returns TOON-formatted list of test files, classes, and methods. Use for: discovering available tests, understanding test structure, finding tests to run. Optionally filter by directory.')]
+#[AsTask(name: 'phpunit-list-tests', namespace: 'mate-phpunit', description: 'List all available PHPUnit tests in the project. Returns TOON-formatted list of test files, classes, and methods. Use for: discovering available tests, understanding test structure, finding tests to run. Optionally filter by directory.')]
 function tool_phpunit_list_tests(
     #[AsOption(name: 'directory')] ?string $directory = null
 ): void {
@@ -256,7 +256,7 @@ function tool_phpunit_list_tests(
     mate_tool_exec('phpunit-list-tests', $payload);
 }
 
-#[AsTask(name: 'phpunit-run-file', namespace: 'mate', description: 'Run PHPUnit tests from a specific file. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: testing changes to a single test file, debugging specific test class, focused test execution.')]
+#[AsTask(name: 'phpunit-run-file', namespace: 'mate-phpunit', description: 'Run PHPUnit tests from a specific file. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: testing changes to a single test file, debugging specific test class, focused test execution.')]
 function tool_phpunit_run_file(
     #[AsArgument(name: 'file')] string $file,
     #[AsOption(name: 'filter')] ?string $filter = null,
@@ -272,7 +272,7 @@ function tool_phpunit_run_file(
     mate_tool_exec('phpunit-run-file', $payload);
 }
 
-#[AsTask(name: 'phpunit-run-method', namespace: 'mate', description: 'Run a single PHPUnit test method. Returns token-optimized TOON format. Available modes: "default" (summary + failure/error details), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: debugging a specific failing test, verifying a single test fix, isolated test execution.')]
+#[AsTask(name: 'phpunit-run-method', namespace: 'mate-phpunit', description: 'Run a single PHPUnit test method. Returns token-optimized TOON format. Available modes: "default" (summary + failure/error details), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: debugging a specific failing test, verifying a single test fix, isolated test execution.')]
 function tool_phpunit_run_method(
     #[AsArgument(name: 'class')] string $class_,
     #[AsArgument(name: 'method')] string $method,
@@ -286,7 +286,7 @@ function tool_phpunit_run_method(
     mate_tool_exec('phpunit-run-method', $payload);
 }
 
-#[AsTask(name: 'phpunit-run-suite', namespace: 'mate', description: 'Run the full PHPUnit test suite. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors with truncated messages), "summary" (just totals and status), "detailed" (full error messages without truncation), "by-file" (errors grouped by file path), "by-class" (errors grouped by test class). Use for: running all tests, CI validation, checking overall test health.')]
+#[AsTask(name: 'phpunit-run-suite', namespace: 'mate-phpunit', description: 'Run the full PHPUnit test suite. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors with truncated messages), "summary" (just totals and status), "detailed" (full error messages without truncation), "by-file" (errors grouped by file path), "by-class" (errors grouped by test class). Use for: running all tests, CI validation, checking overall test health.')]
 function tool_phpunit_run_suite(
     #[AsOption(name: 'configuration')] ?string $configuration = null,
     #[AsOption(name: 'filter')] ?string $filter = null,
@@ -302,13 +302,13 @@ function tool_phpunit_run_suite(
     mate_tool_exec('phpunit-run-suite', $payload);
 }
 
-#[AsTask(name: 'server-info', namespace: 'mate', description: 'Get PHP runtime environment details: version, OS, OS family, and loaded extensions')]
+#[AsTask(name: 'info', namespace: 'mate-server', description: 'Get PHP runtime environment details: version, OS, OS family, and loaded extensions')]
 function tool_server_info(): void
 {
     mate_tool_exec('server-info');
 }
 
-#[AsTask(name: 'symfony-profiler-get', namespace: 'mate', description: 'Get a specific profiler profile by its token. Returns detailed profile data including available collectors and resource_uri for accessing collector-specific data.')]
+#[AsTask(name: 'symfony-profiler-get', namespace: 'mate-symfony', description: 'Get a specific profiler profile by its token. Returns detailed profile data including available collectors and resource_uri for accessing collector-specific data.')]
 function tool_symfony_profiler_get(
     #[AsArgument(name: 'token', description: 'The unique profiler token identifying the profile')] string $token
 ): void {
@@ -318,7 +318,7 @@ function tool_symfony_profiler_get(
     mate_tool_exec('symfony-profiler-get', $payload);
 }
 
-#[AsTask(name: 'symfony-profiler-list', namespace: 'mate', description: 'List and filter Symfony profiler profiles by HTTP method, URL, IP, status code, date range, or context. Profiles are sorted by most recent first, so limit=1 returns the latest profile. Returns summary data with resource_uri for fetching full details via the resource template.')]
+#[AsTask(name: 'symfony-profiler-list', namespace: 'mate-symfony', description: 'List and filter Symfony profiler profiles by HTTP method, URL, IP, status code, date range, or context. Profiles are sorted by most recent first, so limit=1 returns the latest profile. Returns summary data with resource_uri for fetching full details via the resource template.')]
 function tool_symfony_profiler_list(
     #[AsOption(name: 'limit', description: 'Maximum number of profiles to return (use limit=1 to get the latest profile)')] int $limit = 20,
     #[AsOption(name: 'method', description: 'Filter by HTTP method (GET, POST, PUT, DELETE, PATCH)')] ?string $method = null,
@@ -342,7 +342,7 @@ function tool_symfony_profiler_list(
     mate_tool_exec('symfony-profiler-list', $payload);
 }
 
-#[AsTask(name: 'symfony-services', namespace: 'mate', description: 'Search Symfony dependency injection container services. Optionally filter by service ID or class name. Returns a map of service IDs to their class names.')]
+#[AsTask(name: 'symfony-services', namespace: 'mate-symfony', description: 'Search Symfony dependency injection container services. Optionally filter by service ID or class name. Returns a map of service IDs to their class names.')]
 function tool_symfony_services(
     #[AsOption(name: 'query', description: 'Filter services by ID or class name (case-insensitive partial match)')] ?string $query = null
 ): void {

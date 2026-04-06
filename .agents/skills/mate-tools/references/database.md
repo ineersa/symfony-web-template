@@ -2,7 +2,7 @@
 
 Use these instead of ad hoc `information_schema` queries or guessing table/column names. **Inspect schema before `database-query`.**
 
-Execution: **`castor mate:database-schema`**, **`castor mate:database-query '…'`**, or `mate/mate-tool-call.sh database-schema|database-query '<json>'`.
+Execution: **`castor mate-database:database-schema`**, **`castor mate-database:database-query '…'`**, or `mate/mate-tool-call.sh database-schema|database-query '<json>'`.
 
 ## Discovery flow (replaces MCP `db://` resources in Cursor)
 
@@ -30,16 +30,16 @@ Execution: **`castor mate:database-schema`**, **`castor mate:database-query '…
 
 ```bash
 # Tables (summary)
-castor mate:database-schema --detail=summary
+castor mate-database:database-schema --detail=summary
 
 # Columns for one table
-castor mate:database-schema --filter=users --detail=columns
+castor mate-database:database-schema --filter=users --detail=columns
 
 # Prefix match
-castor mate:database-schema --filter=app_ --match-mode=prefix --detail=summary
+castor mate-database:database-schema --filter=app_ --match-mode=prefix --detail=summary
 
 # Sample rows
-castor mate:database-query 'SELECT * FROM users WHERE id = 42 LIMIT 1'
+castor mate-database:database-query 'SELECT * FROM users WHERE id = 42 LIMIT 1'
 ```
 
 ## Examples (wrapper JSON)
