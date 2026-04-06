@@ -10,9 +10,19 @@ This repository is a reusable Symfony UX template.
 - **Reactive component that re-renders on user input** -- use the `live-component` skill
 - **Not sure which one fits** -- use the `symfony-ux` skill
 - **Browser automation / UI testing** -- use Task tool with `subagent_type: "playwright-cli"`
+- **Codebase discovery / architecture / broad code search** -- MUST load `vera-mcp` skill and use Vera tools first (`vera_get_stats`, `vera_get_overview`, `vera_search_code`, `vera_regex_search`)
 - **Infrastructure / Docker / project operations** -- use Castor tasks (`castor ...`) and the `castor` skill
 - **Diagnostics / quality / Composer / PHPStan / PHPUnit operations** -- always load `mate-tools` and use `mate/mate-tool-call.sh` first
 - **Creating or updating Castor task definitions** (`castor.php`, `.castor/*.php`) -- read and follow the `castor` skill first
+
+## Vera MCP (mandatory)
+
+- Always load the `vera-mcp` skill before using Vera tools.
+- For repository discovery, use this order: `vera_get_stats` -> `vera_get_overview` -> `vera_search_code` -> `vera_regex_search` -> `Read`.
+- Exclude deep mode: use iterative targeted queries, not exhaustive/deep exploration.
+- Use `vera_search_code` for conceptual/behavior questions; use `vera_regex_search` for exact identifiers and strings.
+- Start with narrow filters (`scope`, `path`, `lang`, low `limit`), then widen only if needed.
+- Fall back to `Glob`/`Grep` only when Vera cannot produce actionable matches.
 
 ## Operations hierarchy (strict)
 
