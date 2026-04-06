@@ -174,7 +174,7 @@ function parameterBinding(string $propName, array $propDef, bool $isRequired): ?
 
     $default = $propDef['default'] ?? null;
     $desc = $propDef['description'] ?? '';
-    $descStr = \is_string($desc) ? shortenOptionDescription($desc) : '';
+    $descStr = \is_string($desc) ? normalizeDescriptionText($desc) : '';
     $descArg = '' !== $descStr ? ', description: \''.escapePhpSingleQuotedString($descStr).'\'' : '';
 
     $kind = 'string';
@@ -345,24 +345,19 @@ function summarizeDescription(?string $d): string
     if (null === $d || '' === $d) {
         return 'Mate MCP tool';
     }
-    $d = trim(str_replace(["\n", "\r"], ' ', $d));
-    $d = (string) preg_replace('/\s+/', ' ', $d);
-    if (strlen($d) > 280) {
-        $d = substr($d, 0, 277).'...';
-    }
 
-    return $d;
+    return normalizeDescriptionText($d);
 }
 
-function shortenOptionDescription(string $d): string
+/**
+ * Collapses whitespace for embedding in PHP string literals; no length truncation so
+ * `castor mate:* --help` shows full Mate tool and option descriptions.
+ */
+function normalizeDescriptionText(string $d): string
 {
     $d = trim(str_replace(["\n", "\r"], ' ', $d));
-    $d = (string) preg_replace('/\s+/', ' ', $d);
-    if (strlen($d) > 120) {
-        $d = substr($d, 0, 117).'...';
-    }
 
-    return $d;
+    return (string) preg_replace('/\s+/', ' ', $d);
 }
 
 function escapePhpSingleQuotedString(string $s): string

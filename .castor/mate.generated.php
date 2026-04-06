@@ -100,7 +100,7 @@ function tool_composer_why_not(
     mate_tool_exec('composer-why-not', $payload);
 }
 
-#[AsTask(name: 'database-query', namespace: 'mate', description: 'Runs read-only SQL queries against a Doctrine DBAL connection. Only SELECT and WITH (CTE) queries are allowed. Writes, DDL, and transaction control are blocked. One statement per call — semicolons are rejected; split into separate calls. ROW LIMIT: SELECT without WHERE must ...')]
+#[AsTask(name: 'database-query', namespace: 'mate', description: 'Runs read-only SQL queries against a Doctrine DBAL connection. Only SELECT and WITH (CTE) queries are allowed. Writes, DDL, and transaction control are blocked. One statement per call — semicolons are rejected; split into separate calls. ROW LIMIT: SELECT without WHERE must include LIMIT 10. Always default to LIMIT 10. Large text columns (>200 chars) are truncated to "<TEXT>" in multi-row results. To see full text, query must return exactly 1 row. Aggregates without GROUP BY (e.g. SELECT COUNT(*)) are exempt from the LIMIT requirement. Before writing SQL, use database-schema to discover table/column names and avoid errors. Connection names come from the application\'s Doctrine DBAL configuration. If `connection` is omitted, the default Doctrine DBAL connection is used.')]
 function tool_database_query(
     #[AsArgument(name: 'query', description: 'SQL query to validate and execute in read-only mode')] string $query,
     #[AsOption(name: 'connection', description: 'Optional Doctrine DBAL connection name')] ?string $connection = null
@@ -112,7 +112,7 @@ function tool_database_query(
     mate_tool_exec('database-query', $payload);
 }
 
-#[AsTask(name: 'database-schema', namespace: 'mate', description: 'Inspect schema for a Doctrine DBAL connection. Prefer this over raw information_schema/system catalog queries for metadata and definitions. Detail levels: - summary (default): matching table/view names only. - columns: tables with column names, types, nullability, defaults. - ...')]
+#[AsTask(name: 'database-schema', namespace: 'mate', description: 'Inspect schema for a Doctrine DBAL connection. Prefer this over raw information_schema/system catalog queries for metadata and definitions. Detail levels: - summary (default): matching table/view names only. - columns: tables with column names, types, nullability, defaults. - full: columns plus indexes, foreign keys, constraints, trigger and routine definitions. Include flags: - includeViews=true adds view names (summary/columns) or view SQL definitions (full). - includeRoutines=true adds procedures, functions, sequences, trigger names (summary/columns) or their definitions (full). Use detail="columns" or detail="full" with a narrow filter whenever possible. filter matches object names; omit or use filter="" to include all objects. Connection names come from the application\'s Doctrine DBAL configuration. If `connection` is omitted, the default Doctrine DBAL connection is used.')]
 function tool_database_schema(
     #[AsOption(name: 'connection', description: 'Optional Doctrine DBAL connection name')] ?string $connection = null,
     #[AsOption(name: 'filter', description: 'Optional object-name filter')] string $filter = '',
@@ -204,7 +204,7 @@ function tool_monolog_tail(
     mate_tool_exec('monolog-tail', $payload);
 }
 
-#[AsTask(name: 'phpstan-analyse', namespace: 'mate', description: 'Run PHPStan static analysis with token-optimized TOON output. Available modes: "toon" (compact format), "summary" (totals only), "detailed" (full messages), "by-file" (grouped by file), "by-type" (grouped by error type). Use for: checking code quality, finding type errors, val...')]
+#[AsTask(name: 'phpstan-analyse', namespace: 'mate', description: 'Run PHPStan static analysis with token-optimized TOON output. Available modes: "toon" (compact format), "summary" (totals only), "detailed" (full messages), "by-file" (grouped by file), "by-type" (grouped by error type). Use for: checking code quality, finding type errors, validating changes.')]
 function tool_phpstan_analyse(
     #[AsOption(name: 'configuration', description: 'Path to PHPStan configuration file (defaults to auto-detection)')] ?string $configuration = null,
     #[AsOption(name: 'level', description: 'PHPStan rule level (0-9, higher is stricter)')] ?int $level = null,
@@ -256,7 +256,7 @@ function tool_phpunit_list_tests(
     mate_tool_exec('phpunit-list-tests', $payload);
 }
 
-#[AsTask(name: 'phpunit-run-file', namespace: 'mate', description: 'Run PHPUnit tests from a specific file. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: testing changes to a single test file, debuggi...')]
+#[AsTask(name: 'phpunit-run-file', namespace: 'mate', description: 'Run PHPUnit tests from a specific file. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: testing changes to a single test file, debugging specific test class, focused test execution.')]
 function tool_phpunit_run_file(
     #[AsArgument(name: 'file')] string $file,
     #[AsOption(name: 'filter')] ?string $filter = null,
@@ -272,7 +272,7 @@ function tool_phpunit_run_file(
     mate_tool_exec('phpunit-run-file', $payload);
 }
 
-#[AsTask(name: 'phpunit-run-method', namespace: 'mate', description: 'Run a single PHPUnit test method. Returns token-optimized TOON format. Available modes: "default" (summary + failure/error details), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: debugging a specific failing test, verifying a...')]
+#[AsTask(name: 'phpunit-run-method', namespace: 'mate', description: 'Run a single PHPUnit test method. Returns token-optimized TOON format. Available modes: "default" (summary + failure/error details), "summary" (just totals and status), "detailed" (full error messages without truncation). Use for: debugging a specific failing test, verifying a single test fix, isolated test execution.')]
 function tool_phpunit_run_method(
     #[AsArgument(name: 'class')] string $class_,
     #[AsArgument(name: 'method')] string $method,
@@ -286,7 +286,7 @@ function tool_phpunit_run_method(
     mate_tool_exec('phpunit-run-method', $payload);
 }
 
-#[AsTask(name: 'phpunit-run-suite', namespace: 'mate', description: 'Run the full PHPUnit test suite. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors with truncated messages), "summary" (just totals and status), "detailed" (full error messages without truncation), "by-file" (errors grouped by file path...')]
+#[AsTask(name: 'phpunit-run-suite', namespace: 'mate', description: 'Run the full PHPUnit test suite. Returns token-optimized TOON format. Available modes: "default" (summary + failures/errors with truncated messages), "summary" (just totals and status), "detailed" (full error messages without truncation), "by-file" (errors grouped by file path), "by-class" (errors grouped by test class). Use for: running all tests, CI validation, checking overall test health.')]
 function tool_phpunit_run_suite(
     #[AsOption(name: 'configuration')] ?string $configuration = null,
     #[AsOption(name: 'filter')] ?string $filter = null,
