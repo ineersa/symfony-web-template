@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c691a6b6f4749764b8118fb874411a3",
+    "content-hash": "2e9b07169bd5f878d5508c3871faef28",
     "packages": [
         {
             "name": "composer/semver",
@@ -2587,16 +2587,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v8.0.7",
+            "version": "v8.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "9a34c52187112503d02903ab35e6e3783f580c29"
+                "reference": "c7369cc1da250fcbfe0c5a9d109e419661549c39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/9a34c52187112503d02903ab35e6e3783f580c29",
-                "reference": "9a34c52187112503d02903ab35e6e3783f580c29",
+                "url": "https://api.github.com/repos/symfony/config/zipball/c7369cc1da250fcbfe0c5a9d109e419661549c39",
+                "reference": "c7369cc1da250fcbfe0c5a9d109e419661549c39",
                 "shasum": ""
             },
             "require": {
@@ -2641,7 +2641,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v8.0.7"
+                "source": "https://github.com/symfony/config/tree/v8.0.8"
             },
             "funding": [
                 {
@@ -2661,7 +2661,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-06T13:17:40+00:00"
+            "time": "2026-03-30T15:14:47+00:00"
         },
         {
             "name": "symfony/console",
@@ -2755,16 +2755,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v8.0.7",
+            "version": "v8.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "1faaac6dbfe069a92ab9e5c270fa43fc4e1761da"
+                "reference": "3ce58b0fa844dc647ca1d66ea34748af985728c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/1faaac6dbfe069a92ab9e5c270fa43fc4e1761da",
-                "reference": "1faaac6dbfe069a92ab9e5c270fa43fc4e1761da",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/3ce58b0fa844dc647ca1d66ea34748af985728c5",
+                "reference": "3ce58b0fa844dc647ca1d66ea34748af985728c5",
                 "shasum": ""
             },
             "require": {
@@ -2812,7 +2812,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v8.0.7"
+                "source": "https://github.com/symfony/dependency-injection/tree/v8.0.8"
             },
             "funding": [
                 {
@@ -2832,7 +2832,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-03T07:49:33+00:00"
+            "time": "2026-03-31T07:15:36+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3464,16 +3464,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v8.0.6",
+            "version": "v8.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "7bf9162d7a0dff98d079b72948508fa48018a770"
+                "reference": "66b769ae743ce2d13e435528fbef4af03d623e5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/7bf9162d7a0dff98d079b72948508fa48018a770",
-                "reference": "7bf9162d7a0dff98d079b72948508fa48018a770",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/66b769ae743ce2d13e435528fbef4af03d623e5a",
+                "reference": "66b769ae743ce2d13e435528fbef4af03d623e5a",
                 "shasum": ""
             },
             "require": {
@@ -3510,7 +3510,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v8.0.6"
+                "source": "https://github.com/symfony/filesystem/tree/v8.0.8"
             },
             "funding": [
                 {
@@ -3530,20 +3530,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-25T16:59:43+00:00"
+            "time": "2026-03-30T15:14:47+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v8.0.6",
+            "version": "v8.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "441404f09a54de6d1bd6ad219e088cdf4c91f97c"
+                "reference": "8da41214757b87d97f181e3d14a4179286151007"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/441404f09a54de6d1bd6ad219e088cdf4c91f97c",
-                "reference": "441404f09a54de6d1bd6ad219e088cdf4c91f97c",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/8da41214757b87d97f181e3d14a4179286151007",
+                "reference": "8da41214757b87d97f181e3d14a4179286151007",
                 "shasum": ""
             },
             "require": {
@@ -3578,7 +3578,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v8.0.6"
+                "source": "https://github.com/symfony/finder/tree/v8.0.8"
             },
             "funding": [
                 {
@@ -3598,7 +3598,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-29T09:41:02+00:00"
+            "time": "2026-03-30T15:14:47+00:00"
         },
         {
             "name": "symfony/flex",
@@ -7623,16 +7623,16 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v8.0.0",
+            "version": "v8.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "7345f46c251f2eb27c7b3ebdb5bb076b3ffcae04"
+                "reference": "15776bb07a91b089037da89f8832fa41d5fa6ec6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/7345f46c251f2eb27c7b3ebdb5bb076b3ffcae04",
-                "reference": "7345f46c251f2eb27c7b3ebdb5bb076b3ffcae04",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/15776bb07a91b089037da89f8832fa41d5fa6ec6",
+                "reference": "15776bb07a91b089037da89f8832fa41d5fa6ec6",
                 "shasum": ""
             },
             "require": {
@@ -7679,7 +7679,7 @@
                 "serialize"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-exporter/tree/v8.0.0"
+                "source": "https://github.com/symfony/var-exporter/tree/v8.0.8"
             },
             "funding": [
                 {
@@ -7699,7 +7699,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-05T18:53:00+00:00"
+            "time": "2026-03-30T15:14:47+00:00"
         },
         {
             "name": "symfony/web-link",
@@ -8688,6 +8688,84 @@
                 "source": "https://github.com/HelgeSverre/toon-php/tree/v1.4.0"
             },
             "time": "2025-11-06T11:37:12+00:00"
+        },
+        {
+            "name": "ineersa/database-extension",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ineersa/database-extension.git",
+                "reference": "fdc16b336a47638ae3881b474f93fd211f0be8fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ineersa/database-extension/zipball/fdc16b336a47638ae3881b474f93fd211f0be8fe",
+                "reference": "fdc16b336a47638ae3881b474f93fd211f0be8fe",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^4.0",
+                "ext-simplexml": "*",
+                "php": ">=8.2",
+                "symfony/ai-mate": "^0.3 || ^0.4 || ^0.5 || ^0.6@dev"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^2.14",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "helgesverre/toon": "^1 || ^3.0",
+                "phpstan/phpstan": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpunit/phpunit": "^10.0",
+                "rector/rector": "^2.0",
+                "symfony/framework-bundle": "^7.3 || ^8.0"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "Required for database capability exposure via DoctrineBundle DBAL connections (^2.14)"
+            },
+            "default-branch": true,
+            "type": "symfony-ai-mate",
+            "extra": {
+                "ai-mate": {
+                    "includes": [
+                        "config/config.php"
+                    ],
+                    "scan-dirs": [
+                        "src/Capability"
+                    ],
+                    "instructions": "INSTRUCTIONS.md"
+                },
+                "branch-alias": {
+                    "dev-main": "0.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MatesOfMate\\DatabaseExtension\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Illia Vasylevskyi",
+                    "email": "ineersa@gmail.com"
+                }
+            ],
+            "description": "Database extension for Symfony AI Mate — MCP tools and resources for database workflows",
+            "keywords": [
+                "ai",
+                "ai-assistant",
+                "mate",
+                "mcp",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/ineersa/database-extension/issues",
+                "source": "https://github.com/ineersa/database-extension/tree/main"
+            },
+            "time": "2026-04-04T22:14:30+00:00"
         },
         {
             "name": "matesofmate/common",
@@ -12060,16 +12138,16 @@
         },
         {
             "name": "symfony/ai-mate",
-            "version": "v0.6.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ai-mate.git",
-                "reference": "fba550ff6261e6b833df4eb62a35a197916638b8"
+                "reference": "472dcf1ee7adad657e094eaaa559a25e9eea207a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ai-mate/zipball/fba550ff6261e6b833df4eb62a35a197916638b8",
-                "reference": "fba550ff6261e6b833df4eb62a35a197916638b8",
+                "url": "https://api.github.com/repos/symfony/ai-mate/zipball/472dcf1ee7adad657e094eaaa559a25e9eea207a",
+                "reference": "472dcf1ee7adad657e094eaaa559a25e9eea207a",
                 "shasum": ""
             },
             "require": {
@@ -12083,12 +12161,14 @@
             },
             "require-dev": {
                 "ext-simplexml": "*",
+                "helgesverre/toon": "^3.1",
                 "phpstan/phpstan": "^2.1",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-strict-rules": "^2.0",
                 "phpunit/phpunit": "^11.5.53",
                 "symfony/dotenv": "^5.4|^6.4|^7.3|^8.0"
             },
+            "default-branch": true,
             "bin": [
                 "bin/mate"
             ],
@@ -12101,7 +12181,8 @@
                 "ai-mate": {
                     "scan-dirs": [
                         "src/Capability"
-                    ]
+                    ],
+                    "instructions": "INSTRUCTIONS.md"
                 }
             },
             "autoload": {
@@ -12138,7 +12219,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/symfony/ai-mate/tree/v0.6.0"
+                "source": "https://github.com/symfony/ai-mate/tree/main"
             },
             "funding": [
                 {
@@ -12158,20 +12239,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-04T23:27:55+00:00"
+            "time": "2026-03-31T21:26:35+00:00"
         },
         {
             "name": "symfony/ai-monolog-mate-extension",
-            "version": "v0.6.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ai-monolog-mate-extension.git",
-                "reference": "2b71acd8f7b67e81e1c33e437567fc77c613a0b4"
+                "reference": "72cdfa388276c5b9c730991f3b93b8d965157d46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ai-monolog-mate-extension/zipball/2b71acd8f7b67e81e1c33e437567fc77c613a0b4",
-                "reference": "2b71acd8f7b67e81e1c33e437567fc77c613a0b4",
+                "url": "https://api.github.com/repos/symfony/ai-monolog-mate-extension/zipball/72cdfa388276c5b9c730991f3b93b8d965157d46",
+                "reference": "72cdfa388276c5b9c730991f3b93b8d965157d46",
                 "shasum": ""
             },
             "require": {
@@ -12185,6 +12266,7 @@
                 "phpstan/phpstan-strict-rules": "^2.0",
                 "phpunit/phpunit": "^11.5.53"
             },
+            "default-branch": true,
             "type": "symfony-ai-mate",
             "extra": {
                 "thanks": {
@@ -12234,7 +12316,7 @@
                 "monolog"
             ],
             "support": {
-                "source": "https://github.com/symfony/ai-monolog-mate-extension/tree/v0.6.0"
+                "source": "https://github.com/symfony/ai-monolog-mate-extension/tree/main"
             },
             "funding": [
                 {
@@ -12254,20 +12336,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-04T23:27:55+00:00"
+            "time": "2026-03-26T21:29:08+00:00"
         },
         {
             "name": "symfony/ai-symfony-mate-extension",
-            "version": "v0.6.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ai-symfony-mate-extension.git",
-                "reference": "6f56d47e18cd4bacd0d544e39dcc08fcf23fd036"
+                "reference": "4bc08135e937948a322a11e24f5b219cb50b9943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ai-symfony-mate-extension/zipball/6f56d47e18cd4bacd0d544e39dcc08fcf23fd036",
-                "reference": "6f56d47e18cd4bacd0d544e39dcc08fcf23fd036",
+                "url": "https://api.github.com/repos/symfony/ai-symfony-mate-extension/zipball/4bc08135e937948a322a11e24f5b219cb50b9943",
+                "reference": "4bc08135e937948a322a11e24f5b219cb50b9943",
                 "shasum": ""
             },
             "require": {
@@ -12276,6 +12358,7 @@
                 "symfony/dependency-injection": "^7.3|^8.0"
             },
             "require-dev": {
+                "doctrine/doctrine-bundle": "^2.13|^3.0",
                 "phpstan/phpstan": "^2.1",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-strict-rules": "^2.0",
@@ -12287,11 +12370,13 @@
                 "symfony/web-profiler-bundle": "^7.3|^8.0"
             },
             "suggest": {
+                "doctrine/doctrine-bundle": "Required for Doctrine database profiler formatter",
                 "symfony/http-kernel": "Required for profiler data access tools",
                 "symfony/mailer": "Required for mailer profiler formatter",
                 "symfony/translation": "Required for translation profiler collector formatter",
                 "symfony/web-profiler-bundle": "Required for profiler data access tools"
             },
+            "default-branch": true,
             "type": "symfony-ai-mate",
             "extra": {
                 "thanks": {
@@ -12342,7 +12427,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/symfony/ai-symfony-mate-extension/tree/v0.6.0"
+                "source": "https://github.com/symfony/ai-symfony-mate-extension/tree/main"
             },
             "funding": [
                 {
@@ -12362,7 +12447,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-04T23:27:55+00:00"
+            "time": "2026-04-01T18:43:15+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -12834,16 +12919,16 @@
         },
         {
             "name": "symfony/uid",
-            "version": "v8.0.4",
+            "version": "v8.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/uid.git",
-                "reference": "8b81bd3700f5c1913c22a3266a647aa1bb974435"
+                "reference": "f63fa6096a24147283bce4d29327d285326438e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/uid/zipball/8b81bd3700f5c1913c22a3266a647aa1bb974435",
-                "reference": "8b81bd3700f5c1913c22a3266a647aa1bb974435",
+                "url": "https://api.github.com/repos/symfony/uid/zipball/f63fa6096a24147283bce4d29327d285326438e0",
+                "reference": "f63fa6096a24147283bce4d29327d285326438e0",
                 "shasum": ""
             },
             "require": {
@@ -12888,7 +12973,7 @@
                 "uuid"
             ],
             "support": {
-                "source": "https://github.com/symfony/uid/tree/v8.0.4"
+                "source": "https://github.com/symfony/uid/tree/v8.0.8"
             },
             "funding": [
                 {
@@ -12908,7 +12993,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-03T23:40:55+00:00"
+            "time": "2026-03-30T15:14:47+00:00"
         },
         {
             "name": "symfony/web-profiler-bundle",
@@ -13046,13 +13131,24 @@
             "time": "2025-12-08T11:19:18+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "symfony/ai-mate",
+            "version": "dev-main",
+            "alias": "0.6.99",
+            "alias_normalized": "0.6.99.0"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "ineersa/database-extension": 20,
         "matesofmate/common": 20,
         "matesofmate/composer-extension": 20,
         "matesofmate/phpstan-extension": 20,
-        "matesofmate/phpunit-extension": 20
+        "matesofmate/phpunit-extension": 20,
+        "symfony/ai-mate": 20,
+        "symfony/ai-monolog-mate-extension": 20,
+        "symfony/ai-symfony-mate-extension": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

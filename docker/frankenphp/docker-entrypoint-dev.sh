@@ -1,6 +1,19 @@
 #!/bin/bash
 set -e
 
+# Ensure /etc/passwd (and group) has an entry for the mounted /app owner UID/GID so
+# `docker compose exec -u $(id -u)` shells show a real username instead of "I have no name!".
+if [[ -d /app ]]; then
+    APP_UID=$(stat -c '%u' /app 2>/dev/null || echo 0)
+    APP_GID=$(stat -c '%g' /app 2>/dev/null || echo 0)
+    if [[ "${APP_UID}" != "0" ]] && ! getent passwd "${APP_UID}" >/dev/null 2>&1; then
+        if ! getent group "${APP_GID}" >/dev/null 2>&1; then
+            echo "symfony-host:x:${APP_GID}:" >>/etc/group
+        fi
+        echo "symfony-dev:x:${APP_UID}:${APP_GID}:Dev shell:/app:/bin/bash" >>/etc/passwd
+    fi
+fi
+
 # Start FrankenPHP in the background without --watch flag
 # (we'll use our own file watcher)
 frankenphp run --config /etc/caddy/Caddyfile &

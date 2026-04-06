@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace dev;
 
 use Castor\Attribute\AsTask;
+use function Castor\run;
 use function CastorTasks\dev_compose;
+use function CastorTasks\dev_compose_interactive;
 use function CastorTasks\dev_php_exec;
 use function CastorTasks\ensure_data_dir;
 use function CastorTasks\stop_conflicting_dev_port_containers;
@@ -105,16 +107,24 @@ function prune(): void
     dev_compose('down --remove-orphans');
 }
 
-#[AsTask(description: 'Open shell in PHP container as current user')]
+#[AsTask(description: 'Open shell in PHP container as current user (host TTY + docker -it for readline / tab completion)')]
 function sh(): void
 {
-    dev_compose('exec -u $(id -u):$(id -g) php bash');
+    // Castor must use Context::withTty(true); otherwise docker never gets a real PTY even with -it.
+    dev_compose_interactive('exec -it -u $(id -u):$(id -g) php bash');
 }
 
-#[AsTask(description: 'Open root shell in PHP container')]
+#[AsTask(description: 'Open root shell in PHP container (host TTY + docker -it)')]
 function root_sh(): void
 {
-    dev_compose('exec php bash');
+    dev_compose_interactive('exec -it php bash');
+}
+
+#[AsTask(description: 'Regenerate .castor/mate.generated.php from mate mcp:tools:list (run after Mate extension changes)')]
+function mate_generate_castor(): void
+{
+    $root = \dirname(__DIR__);
+    run('php '.escapeshellarg($root.'/.castor/bin/generate-mate-castor-tasks.php'));
 }
 
 #[AsTask(description: 'Run composer command in local container')]
