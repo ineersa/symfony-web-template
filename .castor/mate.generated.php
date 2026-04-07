@@ -351,4 +351,3 @@ function tool_symfony_services(
     ];
     mate_tool_exec('symfony-services', $payload);
 }
-
