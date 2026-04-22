@@ -36,8 +36,8 @@ Never jump directly to raw Docker/CLI commands when the same action exists in Ma
 
 Examples:
 
-- Composer install/update/require -> Mate first: `castor mate-composer:composer-install`, `castor mate-composer:composer-update --mode=summary`, `castor mate-composer:composer-require vendor/package --constraint=^x.y` (schema-driven tasks under `mate-composer:*`, `mate-phpunit:*`, etc.), or `mate/mate-tool-call.sh …` with JSON; fallback: `castor dev:composer-install` / `castor dev:composer "..."`
-- PHPUnit / PHPStan -> Mate first: `castor mate-phpunit:phpunit-run-suite --mode=summary`, `castor mate-phpstan:phpstan-analyse --mode=summary` (or `mate/mate-tool-call.sh` with JSON); fallback: `castor dev:test` / `castor dev:phpstan`
+- Composer install/update/require -> `castor dev:composer-install` / `castor dev:composer "..."` (no Mate composer extension installed)
+- PHPUnit / PHPStan -> `castor dev:test` / `castor dev:phpstan` (no Mate phpunit/phpstan extensions installed)
 - After adding or upgrading Mate extensions, regenerate Castor tasks: `castor dev:mate-generate-castor` (updates `.castor/mate.generated.php` from `mcp:tools:list --format=json`).
 - PHP CS Fixer -> use `castor dev:cs-fix` (no Mate equivalent required by default)
 - Docker lifecycle -> `castor dev:*` / `castor prod:*` (not raw `docker compose up/down` unless no task exists)
@@ -84,6 +84,10 @@ Examples:
 - Local lifecycle: `castor dev:up`, `castor dev:down`, `castor dev:restart`, `castor dev:ps`.
 - Prod-like lifecycle: `castor prod:up`, `castor prod:down`, `castor prod:restart`, `castor prod:ps`.
 
+## Mate tools
+For Mate tools load `mate-tools` SKILL.
+They include tools for: database, monolog and logs, profiler, server info.
+
 ## Template placeholders
 
 - Replace `{{PROJECT_PATH}}` in `.vscode/*.sh` wrappers.
@@ -95,10 +99,3 @@ Examples:
 - Keep pages server-rendered by default and prefer Turbo/Hotwire for navigation and partial updates.
 - Add Live Components only for interactive stateful UI that cannot be handled cleanly with Turbo + Stimulus.
 - Add at least one happy-path application test for each new route.
-
-<!-- BEGIN AI_MATE_INSTRUCTIONS -->
-AI Mate Summary:
-- Role: Project-aware coding guidance via Mate tools (same names as `mcp:tools:call`), run in Docker through Castor or the wrapper script.
-- Required action: Load the `mate-tools` skill (`.agents/skills/mate-tools/SKILL.md`) before Mate-related work; prefer `castor mate-<area>:<tool> …` (e.g. `mate-database:database-query`) or `mate/mate-tool-call.sh` per project hierarchy (Mate → Castor → raw commands).
-- Installed extensions: ineersa/database-extension, matesofmate/composer-extension, matesofmate/phpstan-extension, matesofmate/phpunit-extension, symfony/ai-mate, symfony/ai-monolog-mate-extension, symfony/ai-symfony-mate-extension.
-<!-- END AI_MATE_INSTRUCTIONS -->
