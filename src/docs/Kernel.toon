@@ -1,0 +1,10 @@
+spec: agent-core.file-index/v1
+file: Kernel.php
+class: "App\\Kernel"
+type: class
+wiring:
+  serviceDefinitions[1]{serviceId,visibility,autowire,autoconfigure,file,line}:
+    kernel,public,false,true,src/Kernel.php,10
+  aliases[2]{serviceId,target}:
+    "App\\Kernel",kernel
+    "Symfony\\Component\\HttpKernel\\KernelInterface",kernel

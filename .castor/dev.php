@@ -143,6 +143,12 @@ function composer(string $cmd): void
     dev_php_exec('composer ' . $cmd);
 }
 
+#[AsTask(description: 'Run ai-index command in local container')]
+function ai_index(string $cmd): void
+{
+    dev_php_exec('php vendor/bin/ai-index ' . $cmd);
+}
+
 #[AsTask(description: 'Install PHP dependencies (works with or without a running container)')]
 function composer_install(): void
 {

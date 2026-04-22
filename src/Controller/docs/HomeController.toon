@@ -1,0 +1,9 @@
+spec: agent-core.file-index/v1
+file: HomeController.php
+class: "App\\Controller\\HomeController"
+type: final class
+wiring:
+  serviceDefinitions[1]{serviceId,visibility,autowire,autoconfigure,file,line}:
+    "App\\Controller\\HomeController",public,true,true,src/Controller/HomeController.php,11
+methods[1]{method,start,end,limit,symbolLine,symbolColumn,signature}:
+  __invoke,13,17,5,14,21,"public function __invoke(): Response"

@@ -41,6 +41,7 @@ Examples:
 - After adding or upgrading Mate extensions, regenerate Castor tasks: `castor dev:mate-generate-castor` (updates `.castor/mate.generated.php` from `mcp:tools:list --format=json`).
 - PHP CS Fixer -> use `castor dev:cs-fix` (no Mate equivalent required by default)
 - Docker lifecycle -> `castor dev:*` / `castor prod:*` (not raw `docker compose up/down` unless no task exists)
+- AI index tooling -> `castor dev:ai-index "setup"`, `castor dev:ai-index "wiring:export"`, `castor dev:ai-index "generate --changed"`
 
 ## Key rules
 
@@ -99,3 +100,34 @@ They include tools for: database, monolog and logs, profiler, server info.
 - Keep pages server-rendered by default and prefer Turbo/Hotwire for navigation and partial updates.
 - Add Live Components only for interactive stateful UI that cannot be handled cleanly with Turbo + Stimulus.
 - Add at least one happy-path application test for each new route.
+
+<!-- BEGIN AI_MATE_INSTRUCTIONS -->
+AI Mate Summary:
+- Role: MCP-powered, project-aware coding guidance and tools.
+- Required action: Read and follow `mate/AGENT_INSTRUCTIONS.md` before taking any action in this project, and prefer MCP tools over raw CLI commands whenever possible.
+- Installed extensions: ineersa/database-extension, symfony/ai-mate, symfony/ai-monolog-mate-extension, symfony/ai-symfony-mate-extension.
+<!-- END AI_MATE_INSTRUCTIONS -->
+
+<!-- ai-index:begin -->
+## AI Documentation Index
+
+This repository uses AI index files for fast code navigation.
+
+- Class docs: `src/**/docs/*.toon`
+- Namespace indexes: `src/**/ai-index.toon`
+
+Generated index files are managed via `vendor/bin/ai-index`.
+
+### IDE indexing rule
+
+- JetBrains IDEs must **not** index `*.toon` files (exclude them from indexing).
+
+### Recommended commands
+
+- `vendor/bin/ai-index setup`
+- `vendor/bin/ai-index wiring:export`
+- `vendor/bin/ai-index generate --changed`
+- `vendor/bin/ai-index generate --all --force`
+
+For curated description updates, use `.agents/index-maintainer.md`.
+<!-- ai-index:end -->

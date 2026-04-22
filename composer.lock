@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f19039e94ac32c370157ead18f3bce41",
+    "content-hash": "6389ea1f501b4be7d2c3acb7d00c3fc9",
     "packages": [
         {
             "name": "composer/semver",
@@ -8759,6 +8759,57 @@
                 "source": "https://github.com/HelgeSverre/toon-php/tree/v3.1.0"
             },
             "time": "2025-12-06T05:24:46+00:00"
+        },
+        {
+            "name": "ineersa/ai-index",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ineersa/ai-index.git",
+                "reference": "78abbb6892afe163571784928522347714a1dc99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ineersa/ai-index/zipball/78abbb6892afe163571784928522347714a1dc99",
+                "reference": "78abbb6892afe163571784928522347714a1dc99",
+                "shasum": ""
+            },
+            "require": {
+                "helgesverre/toon": "^1.0 || ^3.1",
+                "nikic/php-parser": "^5.7",
+                "php": ">=8.5",
+                "symfony/console": "^8.0",
+                "symfony/dependency-injection": "^8.0",
+                "symfony/http-kernel": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^13.1"
+            },
+            "bin": [
+                "bin/ai-index"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ineersa\\AiIndex\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Illia Vasylevskyi",
+                    "email": "ineersa@gmail.com"
+                }
+            ],
+            "description": "AI index for Symfony projects with map, callgraph and wiring information.",
+            "support": {
+                "issues": "https://github.com/ineersa/ai-index/issues",
+                "source": "https://github.com/ineersa/ai-index/tree/v0.1.1"
+            },
+            "time": "2026-04-22T22:07:24+00:00"
         },
         {
             "name": "ineersa/database-extension",
