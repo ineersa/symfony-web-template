@@ -32,3 +32,6 @@
 /config/reference.php
 /.castor.stub.php
 .vera/
+
+# AI index artifacts
+*.toon
