@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6389ea1f501b4be7d2c3acb7d00c3fc9",
+    "content-hash": "406248cd151154556f9c6a26b1efd767",
     "packages": [
         {
             "name": "composer/semver",
@@ -8762,22 +8762,24 @@
         },
         {
             "name": "ineersa/ai-index",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ineersa/ai-index.git",
-                "reference": "78abbb6892afe163571784928522347714a1dc99"
+                "reference": "507629cb9b12d55f46bc190e2a57d94b9498ac98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ineersa/ai-index/zipball/78abbb6892afe163571784928522347714a1dc99",
-                "reference": "78abbb6892afe163571784928522347714a1dc99",
+                "url": "https://api.github.com/repos/ineersa/ai-index/zipball/507629cb9b12d55f46bc190e2a57d94b9498ac98",
+                "reference": "507629cb9b12d55f46bc190e2a57d94b9498ac98",
                 "shasum": ""
             },
             "require": {
                 "helgesverre/toon": "^1.0 || ^3.1",
+                "ineersa/call-graph": "^0.1.5",
                 "nikic/php-parser": "^5.7",
                 "php": ">=8.5",
+                "phpstan/phpstan": "^2.1",
                 "symfony/console": "^8.0",
                 "symfony/dependency-injection": "^8.0",
                 "symfony/http-kernel": "^8.0"
@@ -8807,9 +8809,58 @@
             "description": "AI index for Symfony projects with map, callgraph and wiring information.",
             "support": {
                 "issues": "https://github.com/ineersa/ai-index/issues",
-                "source": "https://github.com/ineersa/ai-index/tree/v0.1.1"
+                "source": "https://github.com/ineersa/ai-index/tree/v0.1.2"
             },
-            "time": "2026-04-22T22:07:24+00:00"
+            "time": "2026-04-22T22:46:07+00:00"
+        },
+        {
+            "name": "ineersa/call-graph",
+            "version": "v0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ineersa/call-graph.git",
+                "reference": "d9a161e72d2590f0b500f9300151131d4d668a87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ineersa/call-graph/zipball/d9a161e72d2590f0b500f9300151131d4d668a87",
+                "reference": "d9a161e72d2590f0b500f9300151131d4d668a87",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "phpstan/phpstan": "^2.1"
+            },
+            "suggest": {
+                "phpstan/extension-installer": "Automatically registers callgraph.neon in PHPStan"
+            },
+            "bin": [
+                "bin/callgraph-viz",
+                "bin/callgraph-viz-html"
+            ],
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "callgraph.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CallGraph\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan extension and DOT visualizer for application call graphs",
+            "support": {
+                "issues": "https://github.com/ineersa/call-graph/issues",
+                "source": "https://github.com/ineersa/call-graph/tree/v0.1.5"
+            },
+            "time": "2026-04-08T20:08:21+00:00"
         },
         {
             "name": "ineersa/database-extension",
