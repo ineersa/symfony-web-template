@@ -71,6 +71,12 @@ Examples:
 - Dev compose: `compose.yaml` + `compose.override.yaml`.
 - Prod-like compose: `compose.yaml` + `compose.prod.yaml`.
 
+## LLM mode
+
+- For LLM-driven Castor execution, set `LLM_MODE=true`.
+- In LLM mode, Castor tasks must stay token-efficient (no progress bars / fluff output).
+- Reports are written to `var/reports/` (`phpstan.json`, `phpstan.log`, `php-cs-fixer.json`, `php-cs-fixer.log`, `phpunit.junit.xml`, `phpunit.log`).
+
 ## Castor flow
 
 - First-time setup: `castor dev:setup`, then `castor dev:bootstrap` (and `castor dev:console "doctrine:migrations:migrate --no-interaction"` if Doctrine is used).
