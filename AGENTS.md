@@ -12,7 +12,7 @@ This repository is a reusable Symfony UX template.
 - **Browser automation / UI testing** -- use Task tool with `subagent_type: "playwright-cli"`
 - **Codebase discovery / architecture / broad code search** -- MUST load `vera-mcp` skill and use Vera tools first (`vera_get_stats`, `vera_get_overview`, `vera_search_code`, `vera_regex_search`)
 - **Infrastructure / Docker / project operations** -- use Castor tasks (`castor ...`) and the `castor` skill
-- **Diagnostics / quality / Composer / PHPStan / PHPUnit operations** -- always load `mate-tools` and use `mate/mate-tool-call.sh` first
+- **Database inspection, log search, profiler, server info** -- use Mate Castor tasks (`mate-database:*`, `mate-monolog:*`, `mate-symfony:*`, `mate-server:*`); see "Mate tools" below
 - **Creating or updating Castor task definitions** (`castor.php`, `.castor/*.php`) -- read and follow the `castor` skill first
 
 ## Vera MCP (mandatory)
@@ -28,20 +28,23 @@ This repository is a reusable Symfony UX template.
 
 For project operations, always use this order:
 
-1. **Mate tools first** (if an equivalent Mate command exists)
-2. **Castor task second** (`castor ...`) if Mate is not available
-3. **Raw command last** (`docker compose ...`, etc.) only when neither Mate nor Castor provides the operation
+1. **Mate Castor task first** (`castor mate-<area>:<task>`) for operations Mate covers (database, logs, profiler, server info)
+2. **Castor task second** (`castor dev:*`, `castor prod:*`) for everything else
+3. **Raw command last** (`docker compose ...`, etc.) only when no Castor task exists
 
-Never jump directly to raw Docker/CLI commands when the same action exists in Mate or Castor.
+Never jump directly to raw Docker/CLI commands when a Castor task or Mate task exists.
 
 Examples:
 
-- Composer install/update/require -> `castor dev:composer-install` / `castor dev:composer "..."` (no Mate composer extension installed)
-- PHPUnit / PHPStan -> `castor dev:test` / `castor dev:phpstan` (no Mate phpunit/phpstan extensions installed)
-- After adding or upgrading Mate extensions, regenerate Castor tasks: `castor dev:mate-generate-castor` (updates `.castor/mate.generated.php` from `mcp:tools:list --format=json`).
-- PHP CS Fixer -> use `castor dev:cs-fix` (no Mate equivalent required by default)
-- Docker lifecycle -> `castor dev:*` / `castor prod:*` (not raw `docker compose up/down` unless no task exists)
+- Database schema / queries -> `castor mate-database:database-schema`, `castor mate-database:database-query`
+- Log inspection -> `castor mate-monolog:monolog-tail`, `castor mate-monolog:monolog-search`
+- Profiler -> `castor mate-symfony:symfony-profiler-list`, `castor mate-symfony:symfony-profiler-get`
+- Server info -> `castor mate-server:info`
+- Composer install/update/require -> `castor dev:composer-install` / `castor dev:composer "..."`
+- PHPUnit / PHPStan / CS Fixer -> `castor dev:test` / `castor dev:phpstan` / `castor dev:cs-fix`
+- Docker lifecycle -> `castor dev:*` / `castor prod:*`
 - AI index tooling -> `castor dev:ai-index "setup"`, `castor dev:ai-index "wiring:export"`, `castor dev:ai-index "generate --changed"`
+- After adding or upgrading Mate extensions -> `castor dev:mate-generate-castor`
 
 ## Key rules
 
@@ -57,12 +60,11 @@ Examples:
 - Keep tests deterministic: prefer static assertions and fixed inputs (avoid time/random/network dependent assertions).
 - Use `WebTestCase` for HTTP behavior and assert response status + key page content.
 - For infrastructure operations, use Castor tasks (`castor ...`); when adding or changing those tasks, follow the `castor` skill.
-- Enforce command selection hierarchy: Mate -> Castor -> raw commands (raw only as fallback).
-- For Composer/PHPStan/PHPUnit, always load `mate-tools` and use `mate/mate-tool-call.sh <tool-name> '<json-input>'`.
+- Enforce command selection hierarchy: Mate Castor task -> Castor task -> raw command (raw only as fallback).
+- For Mate operations not covered by a generated Castor task, fall back to `mate/mate-tool-call.sh <tool-name> '<json-input>'`.
 - Never call `docker compose exec ... vendor/bin/mate` directly.
 - Never run Composer or PHP on the host for project operations.
 - For browser verification, always use `playwright-cli` subagent.
-- Prefer Mate tools for diagnostics/quality commands when available (`mate-tools` skill + wrapper scripts).
 
 ## Docker setup
 
@@ -86,8 +88,20 @@ Examples:
 - Prod-like lifecycle: `castor prod:up`, `castor prod:down`, `castor prod:restart`, `castor prod:ps`.
 
 ## Mate tools
-For Mate tools load `mate-tools` SKILL.
-They include tools for: database, monolog and logs, profiler, server info.
+
+Mate tools are Symfony AI Mate extensions exposed as Castor tasks. **Always prefer `castor mate-<area>:<task>`** over raw queries for operations they cover.
+
+**Available tasks:**
+
+| Area | Tasks | Use for |
+|------|-------|--------|
+| `mate-database` | `database-schema`, `database-query` | Inspect tables/columns/indexes, run read-only SQL |
+| `mate-monolog` | `monolog-tail`, `monolog-search`, `monolog-list-files`, `monolog-list-channels`, `monolog-context-search` | Tail logs, search entries by text/regex/context |
+| `mate-symfony` | `symfony-services`, `symfony-profiler-list`, `symfony-profiler-get` | Container service lookup, profiler inspection |
+| `mate-server` | `info` | PHP version, OS, loaded extensions |
+| `mate-tools` | `tools:list`, `tools:inspect` | Discover available Mate tools and their schemas |
+
+For full details and advanced usage, load the `mate-tools` skill.
 
 ## Template placeholders
 

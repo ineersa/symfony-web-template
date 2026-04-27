@@ -32,6 +32,9 @@
 /config/reference.php
 /.castor.stub.php
 .vera/
+.bash_history
 
 # AI index artifacts
 *.toon
+callgraph.json
+callgraph.html
