@@ -17,5 +17,18 @@ parameters:
         - tests/bootstrap.php
         - var/*
         - vendor/*
+    shipmonkDeadCode:
+        usageProviders:
+            symfony:
+                enabled: true
+                configDir: config
+                containerXmlPaths:
+                    - var/cache/dev/App_KernelDevDebugContainer.xml
+                    - var/cache/test/App_KernelTestDebugContainer.xml
+        usageExcluders:
+            tests:
+                enabled: true
+            usageOverMixed:
+                enabled: true
     parallel:
         maximumNumberOfProcesses: 1
