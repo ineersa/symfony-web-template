@@ -64,6 +64,8 @@ Examples:
 - For Mate operations not covered by a generated Castor task, fall back to `mate/mate-tool-call.sh <tool-name> '<json-input>'`.
 - Never call `docker compose exec ... vendor/bin/mate` directly.
 - Never run Composer or PHP on the host for project operations.
+- **Never run `asset-map:compile` in dev.** It is a production-only command that writes stale static files to `public/assets/`, which shadow AssetMapper's dynamic serving and hide all CSS/JS changes until you delete them. In dev, AssetMapper serves assets live — no compile step needed.
+- **Never `rm -rf public/` subdirectories blindly.** Only `public/assets/` is safe to delete (it's gitignored compiled output from `asset-map:compile`). `public/bundles/` (symlinked by `assets:install`), `public/css/` (may contain committed source files like EasyAdmin overrides), and other `public/` entries are source files — deleting them breaks the app. When in doubt, check git status before deleting.
 - For browser verification, always use `playwright-cli` subagent.
 
 ## Docker setup
